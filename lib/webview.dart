@@ -66,6 +66,31 @@ class _CibWebWebViewPageState extends State<CibWebWebViewPage> {
       ..loadRequest(Uri.parse("https://aadl3inscription2024.dz"));
   }
 
+  void _pressStartTheInscriptionButton() {
+    _controller.runJavaScript(
+      """
+     
+      document.getElementById('A14').click(); 
+      """,
+    ).catchError((error) {
+      debugPrint('Error injecting autofill data: $error');
+    });
+  }
+
+  void _autofillUserDetails() {
+    _controller.runJavaScript(
+      """
+      
+      document.getElementById('A22').value = '1234567890123456789';
+      document.getElementById('A27').value = '987654321098';
+      document.getElementById('A13').value = '0541074913';
+     
+      """,
+    ).catchError((error) {
+      debugPrint('Error injecting autofill data: $error');
+    });
+  }
+
   NavigationDelegate _buildNavigationDelegate() {
     return NavigationDelegate(
       onProgress: (int progress) {
@@ -107,7 +132,6 @@ class _CibWebWebViewPageState extends State<CibWebWebViewPage> {
   }
 
   void _handlePageFinished(String url) {
-    // If no error message is displayed in the URL or body, consider the page fully loaded
     if (_isErrorPage(url)) {
       setState(() {
         _isWebsiteLoaded = false;
@@ -120,6 +144,14 @@ class _CibWebWebViewPageState extends State<CibWebWebViewPage> {
       });
       _reloadTimer?.cancel();
       _playNotificationSound();
+
+      //This presses the home screen button that will navigate the user to the inscription page
+      _pressStartTheInscriptionButton();
+      Future.delayed(const Duration(seconds: 2));
+
+      //This will autofill the most important long form fields
+      _autofillUserDetails();
+
       if (kDebugMode) {
         print("Website loaded successfully.");
       }
@@ -175,7 +207,7 @@ class _CibWebWebViewPageState extends State<CibWebWebViewPage> {
           textAlign: TextAlign.center,
         ),
         centerTitle: true,
-        backgroundColor: Colors.blue.shade900,
+        backgroundColor: Colors.blue.shade800,
       ),
       body: Stack(
         children: [

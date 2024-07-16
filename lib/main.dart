@@ -11,14 +11,15 @@ class MyApp extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
-      title: 'AADL3 Inscription helper',
+      title: 'AADL3 Inscription Helper',
       debugShowCheckedModeBanner: false,
       theme: ThemeData(
         primarySwatch: Colors.blue,
-        hintColor: Colors.yellow, // Accent color for the app
-        scaffoldBackgroundColor: Colors.blue.shade900, // Dark blue background
+        hintColor: const Color(0xFFFCBB00), // Yellow color from logo
+        scaffoldBackgroundColor: const Color(0xFFF5F5F5), // Light background
         textTheme: const TextTheme(
-          bodyMedium: TextStyle(color: Colors.white), // Text color
+          bodyMedium:
+              TextStyle(color: Colors.black87), // Dark text color for contrast
         ),
       ),
       home: const HomeScreen(),
@@ -42,7 +43,7 @@ class _HomeScreenState extends State<HomeScreen> {
       Navigator.push(
         context,
         MaterialPageRoute(
-          builder: (context) => CibWebWebViewPage(),
+          builder: (context) => const CibWebWebViewPage(),
         ),
       );
     });
@@ -55,133 +56,53 @@ class _HomeScreenState extends State<HomeScreen> {
   }
 
   @override
-  void dispose() {
-    super.dispose();
-  }
-
-  @override
   Widget build(BuildContext context) {
     return Scaffold(
       body: Center(
-        child: Column(
-          mainAxisAlignment: MainAxisAlignment.center,
-          children: <Widget>[
-            Text(
-              isMonitoring
-                  ? 'Monitoring...'
-                  : 'Press the button to start monitoring',
-              style: const TextStyle(fontSize: 18),
-              textAlign: TextAlign.center,
-            ),
-            const SizedBox(height: 20),
-            ElevatedButton(
-              onPressed: isMonitoring ? stopMonitoring : startMonitoring,
-              style: ElevatedButton.styleFrom(
-                backgroundColor: Colors.yellow, // Yellow button color
+        child: Padding(
+          padding: const EdgeInsets.symmetric(horizontal: 20.0),
+          child: Column(
+            mainAxisAlignment: MainAxisAlignment.center,
+            children: <Widget>[
+              Image.asset(
+                'assets/AADL_logo.png',
+                width: 250,
+                height: 250,
               ),
-              child: Text(
-                isMonitoring ? 'Stop Monitoring' : 'Start Monitoring',
-                style: TextStyle(
-                    color: Colors.blue.shade900), // Dark blue text color
+              const SizedBox(height: 70),
+              Text(
+                isMonitoring
+                    ? 'Monitoring...'
+                    : 'Press the button to start monitoring',
+                style: const TextStyle(fontSize: 18),
+                textAlign: TextAlign.center,
               ),
-            ),
-          ],
+              const SizedBox(height: 20),
+              ElevatedButton(
+                onPressed: isMonitoring ? stopMonitoring : startMonitoring,
+                style: ElevatedButton.styleFrom(
+                  backgroundColor:
+                      const Color(0xFFFCBB00), // Yellow color from logo
+                  padding: const EdgeInsets.symmetric(
+                      vertical: 12.0, horizontal: 24.0),
+                  shape: RoundedRectangleBorder(
+                    borderRadius: BorderRadius.circular(8.0),
+                  ),
+                  elevation: 5,
+                ),
+                child: Text(
+                  isMonitoring ? 'Stop Monitoring' : 'Start Monitoring',
+                  style: const TextStyle(
+                    color: Color(0xFF003366), // Dark blue from logo
+                    fontSize: 16,
+                    fontWeight: FontWeight.bold,
+                  ),
+                ),
+              ),
+            ],
+          ),
         ),
       ),
     );
   }
 }
-
-// import 'package:flutter/material.dart';
-// import 'package:aadl3dz/webview.dart';
-
-// void main() {
-//   runApp(const MyApp());
-// }
-
-// class MyApp extends StatelessWidget {
-//   const MyApp({super.key});
-
-//   @override
-//   Widget build(BuildContext context) {
-//     return MaterialApp(
-//       title: 'AADL3 Inscription helper',
-//       debugShowCheckedModeBanner: false,
-//       theme: ThemeData(
-//         primarySwatch: Colors.blue,
-//         hintColor: Colors.yellow, // Accent color for the app
-//         scaffoldBackgroundColor: Colors.blue.shade900, // Dark blue background
-//         textTheme: const TextTheme(
-//           bodyMedium: TextStyle(color: Colors.white), // Text color
-//         ),
-//       ),
-//       home: const HomeScreen(),
-//     );
-//   }
-// }
-
-// class HomeScreen extends StatefulWidget {
-//   const HomeScreen({super.key});
-
-//   @override
-//   _HomeScreenState createState() => _HomeScreenState();
-// }
-
-// class _HomeScreenState extends State<HomeScreen> {
-//   bool isMonitoring = false;
-
-//   void startMonitoring() {
-//     setState(() {
-//       isMonitoring = true;
-//       Navigator.push(
-//         context,
-//         MaterialPageRoute(
-//           builder: (context) => CibWebWebViewPage(),
-//         ),
-//       );
-//     });
-//   }
-
-//   void stopMonitoring() {
-//     setState(() {
-//       isMonitoring = false;
-//     });
-//   }
-
-//   @override
-//   void dispose() {
-//     super.dispose();
-//   }
-
-//   @override
-//   Widget build(BuildContext context) {
-//     return Scaffold(
-//       body: Center(
-//         child: Column(
-//           mainAxisAlignment: MainAxisAlignment.center,
-//           children: <Widget>[
-//             Text(
-//               isMonitoring
-//                   ? 'Monitoring...'
-//                   : 'Press the button to start monitoring',
-//               style: const TextStyle(fontSize: 18),
-//               textAlign: TextAlign.center,
-//             ),
-//             const SizedBox(height: 20),
-//             ElevatedButton(
-//               onPressed: isMonitoring ? stopMonitoring : startMonitoring,
-//               style: ElevatedButton.styleFrom(
-//                 backgroundColor: Colors.yellow, // Yellow button color
-//               ),
-//               child: Text(
-//                 isMonitoring ? 'Stop Monitoring' : 'Start Monitoring',
-//                 style: TextStyle(
-//                     color: Colors.blue.shade900), // Dark blue text color
-//               ),
-//             ),
-//           ],
-//         ),
-//       ),
-//     );
-//   }
-// }
