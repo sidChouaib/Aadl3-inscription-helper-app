@@ -56,3 +56,7 @@ Gmail: chouaib.sid.ubma@gmail.com
 LinkedIn: [Chouaib SID](https://www.linkedin.com/in/chouaib-sid/)
 
 This work has been ispired by the open source chrome extension built by @zraymene [Project Repo](https://github.com/zraymene/aadl3_helper_extension/tree/main)
+
+## Caution
+
+The purpose of this app is to minimize the time spent on the website (auto reloading and auto filling) & lowering the rates of errors while typing. The app mimics the human actions of refreshing and input filling only. It doesn't communicate in any means with the website nor it tries to exploit any vulnerability.
