@@ -1,4 +1,4 @@
-# AADL3 Inscription Heloper App 🚀
+# AADL3 Inscription Helper App 🚀
 
 Welcome! This flutter app is designed to streamline and automate the registration process for this housing website that opens for a few seconds every several hours and under very heavy loads of demand (Roughly 1 Million people registered in a week).
 
