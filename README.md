@@ -5,7 +5,7 @@ Welcome! This flutter app is designed to streamline and automate the registratio
 This app solves the problem for people that aren't constantly facing their computers checking the website using AutoReload browser extensions.
 
 ## Screenshots 
-![App Screenshot]([images/screenshot.png](https://github.com/sidChouaib/Aadl3-inscription-helper-app/blob/main/01.png))
+![App Screenshot](https://github.com/sidChouaib/Aadl3-inscription-helper-app/blob/main/01.png)
 
 ## Features 🌟
 
